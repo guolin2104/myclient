@@ -53,14 +53,14 @@ public class RegisterServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 
 		try (PrintWriter out = response.getWriter()) {
-			String userName = "bbb";// request.getParameter("UserName");
-			String password = "aaa";// request.getParameter("Password");
+			String userName = request.getParameter("UserName");
+			String password = request.getParameter("Password");
 
 			int result = doRegister(userName, password);
 
 			Map<String, String> params = new HashMap<>();
 			JSONObject jsonObject = new JSONObject();
-			if (result == 0) {// 注册成功
+			if (result == 1) {// 注册成功
 				params.put("Result", "success");
 			} else if (result == -1) {// 用户已存在
 				params.put("Result", "exists");

@@ -48,7 +48,7 @@ public class UserDao {
 		if (user == null) {
 			return 1;
 		}
-		int result = 0;// 0代表注册成功，1代表注册失败，-1代表用户已存在
+		int result = 0;// 1代表注册成功，0代表注册失败，-1代表用户已存在
 		// 先查询该用户是否存在
 		User user0 = queryUser(user.getUserName());
 		if (user0 != null) {
@@ -56,7 +56,7 @@ public class UserDao {
 		} else {
 			Connection conn = DBManager.getConnection();
 			PreparedStatement preparedStatement = null;
-			boolean resultSet = false;
+			int resultSet = 0;
 
 			StringBuilder sql = new StringBuilder();
 			sql.append("INSERT INTO user (UserName, Password) VALUES (?, ?)");
@@ -65,11 +65,11 @@ public class UserDao {
 				preparedStatement = conn.prepareStatement(sql.toString());
 				preparedStatement.setString(1, user.getUserName());
 				preparedStatement.setString(2, user.getPassword());
-				resultSet = preparedStatement.execute();
-				if (resultSet) {
-					result = 0;
-				} else {
+				resultSet = preparedStatement.executeUpdate();
+				if (resultSet == 1) {
 					result = 1;
+				} else {
+					result = 0;
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

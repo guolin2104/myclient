@@ -21,7 +21,7 @@
 		</init-param>
 		<init-param>
 			<param-name>DBPassword</param-name>
-			<param-value></param-value>
+			<param-value>root</param-value>
 		</init-param>
 		<init-param>
 			<param-name>ConnectionURL</param-name>
