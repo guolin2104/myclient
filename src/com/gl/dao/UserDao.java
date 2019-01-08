@@ -43,4 +43,42 @@ public class UserDao {
 			DBManager.closeAll(conn, preparedStatement, resultSet);
 		}
 	}
+
+	public static int createUser(User user) {
+		if (user == null) {
+			return 1;
+		}
+		int result = 0;// 0代表注册成功，1代表注册失败，-1代表用户已存在
+		// 先查询该用户是否存在
+		User user0 = queryUser(user.getUserName());
+		if (user0 != null) {
+			result = -1;
+		} else {
+			Connection conn = DBManager.getConnection();
+			PreparedStatement preparedStatement = null;
+			boolean resultSet = false;
+
+			StringBuilder sql = new StringBuilder();
+			sql.append("INSERT INTO user (UserName, Password) VALUES (?, ?)");
+
+			try {
+				preparedStatement = conn.prepareStatement(sql.toString());
+				preparedStatement.setString(1, user.getUserName());
+				preparedStatement.setString(2, user.getPassword());
+				resultSet = preparedStatement.execute();
+				if (resultSet) {
+					result = 0;
+				} else {
+					result = 1;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				result = 1;
+			} finally {
+				DBManager.closeAll(conn, preparedStatement, null);
+			}
+		}
+		return result;
+	}
 }
