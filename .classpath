@@ -17,5 +17,11 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/EclipseWorkspace/myclient/WebContent/WEB-INF/lib/java-jwt-3.2.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-core-2.9.8.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/java-jwt-3.2.0.jar" sourcepath="WebContent/WEB-INF/lib/java-jwt-3.2.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-databind-2.9.8.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-annotations-2.9.8.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

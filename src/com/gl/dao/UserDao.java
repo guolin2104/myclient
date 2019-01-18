@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import com.gl.bean.User;
 import com.gl.db.DBManager;
+import com.gl.util.TextUtil;
 
 public class UserDao {
 
@@ -45,8 +46,8 @@ public class UserDao {
 	}
 
 	public static int createUser(User user) {
-		if (user == null) {
-			return 1;
+		if (user == null || TextUtil.isEmpty(user.getUserName()) || TextUtil.isEmpty(user.getPassword())) {
+			return 0;
 		}
 		int result = 0;// 1代表注册成功，0代表注册失败，-1代表用户已存在
 		// 先查询该用户是否存在

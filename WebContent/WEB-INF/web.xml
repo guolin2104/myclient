@@ -29,7 +29,6 @@
 		</init-param>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
-
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>com.gl.servlet.LoginServlet</servlet-class>
@@ -41,7 +40,6 @@
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
-
 	<servlet>
 		<servlet-name>RegisterServlet</servlet-name>
 		<servlet-class>com.gl.servlet.RegisterServlet</servlet-class>
@@ -51,4 +49,12 @@
 		<url-pattern>/register.do</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>TokenServlet</servlet-name>
+		<servlet-class>com.gl.servlet.TokenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TokenServlet</servlet-name>
+		<url-pattern>/token.do</url-pattern>
+	</servlet-mapping>
 </web-app>
